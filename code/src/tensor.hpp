@@ -10,6 +10,8 @@ struct Tensor {
         std::copy(std::begin(values), std::end(values), _buffer.get());
     }
 
+    ~Tensor() = default;
+
     const T* begin() const { return _buffer.get(); }
     const T* end() const { return _buffer.get() + _shape.shape_capacity(); }
 

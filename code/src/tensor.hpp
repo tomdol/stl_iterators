@@ -4,8 +4,8 @@
 #include <memory>
 
 template <typename T> struct Tensor {
-    Tensor(const Shape& shape, std::initializer_list<T> values)
-        : _shape{std::move(shape)}, _buffer{std::make_unique<T[]>(shape.shape_capacity())} {
+    Tensor(Shape&& shape, std::initializer_list<T> values)
+        : _shape{std::move(shape)}, _buffer{std::make_unique<T[]>(_shape.shape_capacity())} {
         std::copy(std::begin(values), std::end(values), _buffer.get());
     }
 

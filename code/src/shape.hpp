@@ -3,15 +3,12 @@
 #include <numeric>
 #include <vector>
 
-struct Shape : std::vector<int32_t> {
+struct Shape : std::vector<uint32_t> {
     using dimension_t = value_type;
 
-    Shape(std::initializer_list<dimension_t> dims)
-        : std::vector<dimension_t>{std::begin(dims), std::end(dims)} {}
+    Shape(std::initializer_list<dimension_t> dims) : std::vector<dimension_t>{std::begin(dims), std::end(dims)} {}
 
-    int32_t shape_capacity() const {
-        return std::accumulate(begin(), end(), 1, std::multiplies<int32_t>());
-    }
+    uint32_t shape_capacity() const { return std::accumulate(begin(), end(), 1, std::multiplies<uint32_t>()); }
 };
 
 std::ostream& operator<<(std::ostream& s, const Shape& shape) {

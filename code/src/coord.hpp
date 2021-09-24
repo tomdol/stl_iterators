@@ -35,4 +35,4 @@ struct Coord : std::array<T, Dims> {
     }
 };
 
-using Coord2D = Coord<2>;
+using Coord2D = Coord<2, int>;

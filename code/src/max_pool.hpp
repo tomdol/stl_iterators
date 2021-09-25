@@ -29,13 +29,14 @@ void max_pool(const Tensor<T>& data, Tensor<T>& out, const Shape& kernel, const 
                             const size_t data_elem_index =
                                 data_shape[3] * (kernel_row + kernel_position[0]) + kernel_col + kernel_position[1];
 
-                            if (*(data.begin() + data_elem_index) > max_elem) {
-                                max_elem = *(data.begin() + data_elem_index);
+                            const auto current_elem = *(data.buffer() + data_elem_index);
+                            if (current_elem > max_elem) {
+                                max_elem = current_elem;
                             }
                         }
                     }
 
-                    *(out.begin() + out_idx) = max_elem;
+                    *(out.buffer() + out_idx) = max_elem;
                     ++out_idx;
                 }
             }

@@ -1,6 +1,7 @@
 #pragma once
 
 #include "shape.hpp"
+#include "validation.hpp"
 #include <memory>
 
 template <typename T>
@@ -13,13 +14,38 @@ struct Tensor {
 
     ~Tensor() = default;
 
-    T* begin() { return _buffer.get(); }
-    T* end() { return _buffer.get() + _shape.shape_capacity(); }
-
-    const T* const begin() const { return _buffer.get(); }
-    const T* const end() const { return _buffer.get() + _shape.shape_capacity(); }
+    T* buffer() const { return _buffer.get(); }
 
     const Shape& shape() const noexcept { return _shape; }
+
+    friend std::ostream& operator<<(std::ostream& s, const Tensor& t) {
+        const auto& shape = t.shape();
+        THROW_IF(shape.size() != 4, "This operator can only output 4D tensors");
+
+        size_t elem_idx = 0;
+        for (size_t b = 0; b < shape[0]; ++b) {
+            for (size_t c = 0; c < shape[1]; ++c) {
+                for (size_t row = 0; row < shape[2]; ++row) {
+                    s << "  [";
+                    for (size_t col = 0; col < shape[3]; ++col) {
+                        const auto elem = *(t.buffer() + elem_idx++);
+                        const auto onechar = std::abs(elem) < 10;
+                        const auto negative = elem < 0;
+                        size_t padding_len = 1;
+                        if (onechar)
+                            padding_len += 1;
+                        if (negative)
+                            padding_len -= 1;
+                        const auto padding = std::string(padding_len, ' ');
+                        s << padding << elem << ", ";
+                    }
+                    s << "\b\b]" << std::endl;
+                }
+            }
+        }
+
+        return s;
+    }
 
   private:
     const Shape _shape;

@@ -15,6 +15,7 @@ struct Tensor {
     ~Tensor() = default;
 
     T* buffer() const { return _buffer.get(); }
+    size_t elements() const { return _shape.shape_capacity(); }
 
     const Shape& shape() const noexcept { return _shape; }
 

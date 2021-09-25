@@ -4,7 +4,14 @@
 #include "tensor.hpp"
 
 int main(int argc, char** argv) {
-    const auto data = Tensor<int32_t>{Shape{1, 1, 4, 4}, {25, 5, 16, 27, -7, 13, -2, 7, 17, 4, 22, 28, -20, 11, 0, 17}};
+    // clang-format off
+    const auto data = Tensor<int32_t>{Shape{1, 1, 4, 4}, 
+        {25,  5, 16, 27, 
+         -7, 13, -2,  7, 
+         17,  4, 22, 28, 
+        -20, 11,  0, 17}};
+    // clang-format on
+    
     auto output = Tensor<int32_t>{Shape{1, 1, 3, 3}};
 
     std::cout << data << std::endl;

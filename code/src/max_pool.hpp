@@ -8,11 +8,10 @@
 #include <limits>
 
 template <typename T>
-void max_pool(const Tensor<T>& data, Tensor<T>& out, const Shape& kernel, const Shape& paddings_begin,
-              const Shape& paddings_end) {
+void max_pool(const Tensor<T>& data, Tensor<T>& out, const Shape& kernel, const Shape& paddings_begin) {
     const Shape& data_shape = data.shape();
     const Shape& out_shape = out.shape();
-    THROW_IF(data_shape.size() != 4 || out_shape.size() != 4, "This code only supports 4D tensors.");
+    THROW_IF(data_shape.rank() != 4 || out_shape.rank() != 4, "This code only supports 4D tensors.");
 
     size_t out_idx = 0;
     for (size_t b = 0; b < data_shape[0]; ++b) {

@@ -14,6 +14,8 @@ struct Tensor {
 
     ~Tensor() = default;
 
+    void reset() { _buffer = std::make_unique<T[]>(_shape.shape_capacity()); }
+
     T* buffer() const { return _buffer.get(); }
     size_t elements() const { return _shape.shape_capacity(); }
 
@@ -21,7 +23,7 @@ struct Tensor {
 
     friend std::ostream& operator<<(std::ostream& s, const Tensor& t) {
         const auto& shape = t.shape();
-        THROW_IF(shape.size() != 4, "This operator can only output 4D tensors");
+        THROW_IF(shape.rank() != 4, "This operator can only output 4D tensors");
 
         size_t elem_idx = 0;
         for (size_t b = 0; b < shape[0]; ++b) {
@@ -29,7 +31,7 @@ struct Tensor {
                 for (size_t row = 0; row < shape[2]; ++row) {
                     s << "  [";
                     for (size_t col = 0; col < shape[3]; ++col) {
-                        const auto elem = *(t.buffer() + elem_idx++);
+                        const T elem = *(t.buffer() + elem_idx++);
                         const auto onechar = std::abs(elem) < 10;
                         const auto negative = elem < 0;
                         size_t padding_len = 1;

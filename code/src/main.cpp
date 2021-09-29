@@ -11,7 +11,7 @@ void infer_max_pool(const Tensor<int32_t>& data, Tensor<int32_t>& output, const 
 
 void infer_max_pool1(const Tensor<int32_t>& data, Tensor<int32_t>& output, const Shape& kernel, const Shape& pads_begin,
                      const Shape& pads_end) {
-    max_pool1(std::span<const int32_t>{data.buffer(), data.elements()},
+    max_pool1(std::span<int32_t>{data.buffer(), data.elements()},
               std::span<int32_t>{output.buffer(), output.elements()}, data.shape(), output.shape(), kernel, pads_begin,
               pads_end);
 }

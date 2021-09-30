@@ -12,6 +12,10 @@ struct Tensor {
         std::copy(std::begin(values), std::end(values), _buffer.get());
     }
 
+    Tensor(Shape&& shape, const std::vector<T>& values) : Tensor<T>{std::move(shape)} {
+        std::copy(std::begin(values), std::end(values), _buffer.get());
+    }
+
     ~Tensor() = default;
 
     void reset() { _buffer = std::make_unique<T[]>(_shape.shape_capacity()); }

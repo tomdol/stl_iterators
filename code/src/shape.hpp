@@ -6,6 +6,8 @@
 struct Shape {
     using dimension_t = int32_t;
 
+    Shape() = default;
+
     Shape(std::initializer_list<dimension_t> dims) : _dimensions{std::begin(dims), std::end(dims)} {}
 
     template <typename Iterator>

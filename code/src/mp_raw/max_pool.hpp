@@ -7,6 +7,7 @@
 
 #include <limits>
 
+namespace mp_raw {
 template <typename T>
 void max_pool(const Tensor<T>& data, Tensor<T>& out, const Shape& kernel, const Shape& paddings_begin) {
     const Shape& data_shape = data.shape();
@@ -42,3 +43,4 @@ void max_pool(const Tensor<T>& data, Tensor<T>& out, const Shape& kernel, const 
         }
     }
 }
+} // namespace mp_raw

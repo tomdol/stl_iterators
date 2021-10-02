@@ -14,7 +14,7 @@ struct KernelIterator final {
     using pointer = T*;
     using reference = T&;
 
-    KernelIterator(const std::span<T>& tensor_data, const Coord2D& kernel_position, const Shape& kernel_shape,
+    KernelIterator(T* tensor_data, const Coord2D& kernel_position, const Shape& kernel_shape,
                    const Shape& tensor_shape) :
         _tensor_data{tensor_data}, _kernel_shape{kernel_shape}, _tensor_columns_count{tensor_shape[3]} {
 
@@ -22,18 +22,16 @@ struct KernelIterator final {
         _data_elem_idx = _base_offset;
     }
 
-    KernelIterator(const Coord2D& kernel_position, const Shape& kernel_shape, const Shape& tensor_shape, EndIteratorTag) {
+    KernelIterator(const Coord2D& kernel_position, const Shape& kernel_shape, const Shape& tensor_shape,
+                   EndIteratorTag) {
         _data_elem_idx = tensor_shape[3] * kernel_position[0] + kernel_position[1];
         _data_elem_idx += tensor_shape[3] * kernel_shape[1];
     }
 
     reference operator*() { return _tensor_data[_data_elem_idx]; }
-    const reference operator*() const { return _tensor_data[_data_elem_idx]; }
+    const reference operator*() const { return *(_tensor_data + _data_elem_idx); }
 
-    bool operator==(const KernelIterator<T>& other) const 
-    { 
-        return _data_elem_idx == other._data_elem_idx; 
-    }
+    bool operator==(const KernelIterator<T>& other) const { return _data_elem_idx == other._data_elem_idx; }
 
     KernelIterator<T>& operator++() {
         if (++_kernel_col == _kernel_shape[1]) {
@@ -47,7 +45,7 @@ struct KernelIterator final {
     }
 
   private:
-    std::span<T> _tensor_data;
+    T* _tensor_data = nullptr;
     Shape _kernel_shape;
     int32_t _tensor_columns_count = 0;
 
@@ -60,8 +58,7 @@ struct KernelIterator final {
 
 template <typename T>
 struct Kernel final {
-    Kernel(const Shape& kernel_shape, const Coord2D& kernel_position, const Shape& tensor_shape,
-           const std::span<T>& tensor_data) :
+    Kernel(const Shape& kernel_shape, const Coord2D& kernel_position, const Shape& tensor_shape, T* tensor_data) :
         _kernel_shape{kernel_shape},
         _kernel_position{kernel_position},
         _tensor_shape{tensor_shape},
@@ -79,5 +76,5 @@ struct Kernel final {
     Shape _kernel_shape;
     Coord2D _kernel_position;
     Shape _tensor_shape;
-    std::span<T> _tensor_data;
+    T* _tensor_data;
 };

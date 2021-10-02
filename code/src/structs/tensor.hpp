@@ -20,7 +20,8 @@ struct Tensor {
 
     void reset() { _buffer = std::make_unique<T[]>(_shape.shape_capacity()); }
 
-    T* buffer() const { return _buffer.get(); }
+    T* buffer() { return _buffer.get(); }
+    const T* const buffer() const { return _buffer.get(); }
     size_t elements() const { return _shape.shape_capacity(); }
 
     const Shape& shape() const noexcept { return _shape; }

@@ -9,6 +9,21 @@
 #include <limits>
 #include <span>
 
+namespace own {
+
+// doesnt use std::less to compare iterator values
+template <class ForwardIterator>
+inline ForwardIterator max_element(ForwardIterator __first, ForwardIterator __last) {
+    ForwardIterator __i = __first;
+    while (++__i != __last)
+        if (*__first < *__i)
+            __first = __i;
+
+    return __first;
+}
+
+} // namespace own
+
 namespace mp_iter {
 template <typename T>
 void max_pool(const T* data, T* output, const Shape& data_shape, const Shape& out_shape, const Shape& kernel_shape,
@@ -30,6 +45,7 @@ void max_pool(const T* data, T* output, const Shape& data_shape, const Shape& ou
                     const auto kernel = Kernel{kernel_shape, kernel_position, data_shape, channel_data};
 
                     const auto max_elem = std::max_element(std::begin(kernel), std::end(kernel));
+                    // const auto max_elem = own::max_element(std::begin(kernel), std::end(kernel));
 
                     *(output + out_idx) = *max_elem;
                     ++out_idx;

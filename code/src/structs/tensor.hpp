@@ -6,13 +6,13 @@
 
 template <typename T>
 struct Tensor {
-    Tensor(Shape&& shape) : _shape{std::move(shape)}, _buffer{std::make_unique<T[]>(_shape.shape_capacity())} {}
+    Tensor(Shape shape) : _shape{std::move(shape)}, _buffer{std::make_unique<T[]>(_shape.shape_capacity())} {}
 
-    Tensor(Shape&& shape, std::initializer_list<T> values) : Tensor<T>{std::move(shape)} {
+    Tensor(Shape shape, std::initializer_list<T> values) : Tensor<T>{std::move(shape)} {
         std::copy(std::begin(values), std::end(values), _buffer.get());
     }
 
-    Tensor(Shape&& shape, const std::vector<T>& values) : Tensor<T>{std::move(shape)} {
+    Tensor(Shape shape, const std::vector<T>& values) : Tensor<T>{std::move(shape)} {
         std::copy(std::begin(values), std::end(values), _buffer.get());
     }
 

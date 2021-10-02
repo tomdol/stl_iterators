@@ -1,3 +1,4 @@
+#include <algorithm>
 #include <chrono>
 #include <iostream>
 
@@ -24,11 +25,16 @@ elapsed_time_t infer_max_pool_iter(const Tensor<int32_t>& data, Tensor<int32_t>&
 }
 
 int main(int argc, char** argv) {
+    const auto spatial = 500;
+    const auto in_shape = Shape{1, 1, spatial, spatial};
+    const auto out_shape = Shape{1, 1, spatial - 1, spatial - 1};
+
     std::vector<int32_t> input_values;
-    input_values.resize(1000000);
+    input_values.resize(in_shape.shape_capacity());
     std::iota(input_values.begin(), input_values.end(), 1);
-    const auto data = Tensor<int32_t>(Shape{1, 1, 1000, 1000}, input_values);
-    auto output = Tensor<int32_t>{Shape{1, 1, 999, 999}};
+    std::random_shuffle(std::begin(input_values), std::end(input_values));
+    const auto data = Tensor<int32_t>(in_shape, input_values);
+    auto output = Tensor<int32_t>{out_shape};
 
     const auto kernel = Shape{2, 2};
     const auto pads_begin = Shape{0, 0};

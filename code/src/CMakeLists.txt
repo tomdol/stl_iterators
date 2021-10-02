@@ -8,7 +8,9 @@ add_executable(iterators main.cpp)
 target_include_directories(iterators PRIVATE ${CMAKE_SOURCE_DIR}/src)
 target_link_libraries(iterators structs mp_raw mp_kernel_iterator)
 
-# add_executable(perf ${_HEADERS} ${_PERF_SOURCES})
+add_executable(perf perf.cpp)
+target_include_directories(perf PRIVATE ${CMAKE_SOURCE_DIR}/src)
+target_link_libraries(perf structs mp_raw mp_kernel_iterator)
 
 set_target_properties(iterators PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR})
-# set_target_properties(perf PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR})
+set_target_properties(perf PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR})

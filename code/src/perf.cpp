@@ -1,9 +1,9 @@
 #include <chrono>
 #include <iostream>
 
-#include "../max_pool.hpp"
-#include "../max_pool1.hpp"
-#include "../tensor.hpp"
+#include "mp_kernel_iterator/max_pool.hpp"
+#include "mp_raw/max_pool.hpp"
+#include "structs/tensor.hpp"
 
 using elapsed_time_t  = std::chrono::high_resolution_clock::duration::rep;
 

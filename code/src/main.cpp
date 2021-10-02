@@ -1,13 +1,13 @@
 #include <iostream>
 
-// #include "max_pool.hpp"
+#include "mp_raw/max_pool.hpp"
 // #include "max_pool1.hpp"
 #include "structs/tensor.hpp"
 
-// void infer_max_pool(const Tensor<int32_t>& data, Tensor<int32_t>& output, const Shape& kernel, const Shape& pads_begin,
-//                     const Shape& pads_end) {
-//     max_pool(data, output, kernel, pads_begin);
-// }
+void infer_max_pool(const Tensor<int32_t>& data, Tensor<int32_t>& output, const Shape& kernel, const Shape& pads_begin,
+                    const Shape& pads_end) {
+    max_pool(data, output, kernel, pads_begin);
+}
 
 // void infer_max_pool1(const Tensor<int32_t>& data, Tensor<int32_t>& output, const Shape& kernel, const Shape& pads_begin,
 //                      const Shape& pads_end) {
@@ -32,8 +32,8 @@ int main(int argc, char** argv) {
 
     std::cout << data << std::endl;
 
-    // infer_max_pool(data, output, kernel, pads_begin, pads_end);
-    // std::cout << output << std::endl;
+    infer_max_pool(data, output, kernel, pads_begin, pads_end);
+    std::cout << output << std::endl;
 
     // output.reset();
     // infer_max_pool1(data, output, kernel, pads_begin, pads_end);

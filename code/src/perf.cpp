@@ -1,5 +1,6 @@
 #include <algorithm>
 #include <chrono>
+#include <iomanip>
 #include <iostream>
 
 #include "mp_kernel_iterator/max_pool.hpp"
@@ -40,18 +41,17 @@ int main(int argc, char** argv) {
     const auto pads_begin = Shape{0, 0};
     const auto pads_end = Shape{0, 0};
 
-    // std::cout << data << std::endl;
-    elapsed_time_t elapsed_time = 0;
-
-    elapsed_time = infer_max_pool_iter(data, output, kernel, pads_begin, pads_end);
-    // std::cout << output << std::endl;
-    std::cout << "Elapsed time: " << elapsed_time << "ms" << std::endl;
+    const auto elapsed_time_iter = infer_max_pool_iter(data, output, kernel, pads_begin, pads_end);
+    std::cout << "Elapsed time (iter): " << elapsed_time_iter << "ms" << std::endl;
     output.reset();
 
-    elapsed_time = infer_max_pool_raw(data, output, kernel, pads_begin, pads_end);
+    const auto elapsed_time_raw = infer_max_pool_raw(data, output, kernel, pads_begin, pads_end);
     // std::cout << output << std::endl;
-    std::cout << "Elapsed time: " << elapsed_time << "ms" << std::endl;
+    std::cout << "Elapsed time  (raw): " << elapsed_time_raw << "ms" << std::endl;
     output.reset();
+
+    std::cout << "\niter / raw: "  << std::setprecision(2) << float(elapsed_time_iter) / float(elapsed_time_raw)
+              << "x slower" << std::endl;
 
     return 0;
 }

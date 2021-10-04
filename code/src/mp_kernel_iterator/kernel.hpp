@@ -28,8 +28,8 @@ struct KernelIterator final {
         _data_elem_idx += tensor_shape[3] * kernel_shape[1];
     }
 
-    reference operator*() { return _tensor_data[_data_elem_idx]; }
-    const reference operator*() const { return *(_tensor_data + _data_elem_idx); }
+    T& operator*() { return _tensor_data[_data_elem_idx]; }
+    const T& operator*() const { return *(_tensor_data + _data_elem_idx); }
 
     bool operator==(const KernelIterator<T>& other) const { return _data_elem_idx == other._data_elem_idx; }
 

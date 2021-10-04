@@ -16,7 +16,7 @@ struct KernelIterator final {
 
     KernelIterator(T* tensor_data, const Coord2D& kernel_position, const Shape& kernel_shape,
                    const Shape& tensor_shape) :
-        _tensor_data{tensor_data}, _kernel_shape{kernel_shape}, _tensor_columns_count{tensor_shape[3]} {
+        _tensor_data{tensor_data}, _kernel_cols{kernel_shape[1]}, _tensor_columns_count{tensor_shape[3]} {
 
         _base_offset = _tensor_columns_count * kernel_position[0] + kernel_position[1];
         _data_elem_idx = _base_offset;
@@ -34,7 +34,7 @@ struct KernelIterator final {
     bool operator==(const KernelIterator<T>& other) const { return _data_elem_idx == other._data_elem_idx; }
 
     KernelIterator<T>& operator++() {
-        if (++_kernel_col == _kernel_shape[1]) {
+        if (++_kernel_col == _kernel_cols) {
             _kernel_col = 0;
             ++_kernel_row;
         }
@@ -46,7 +46,7 @@ struct KernelIterator final {
 
   private:
     T* _tensor_data = nullptr;
-    Shape _kernel_shape;
+    int32_t _kernel_cols;
     int32_t _tensor_columns_count = 0;
 
     int32_t _base_offset = 0;

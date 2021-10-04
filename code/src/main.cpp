@@ -11,7 +11,7 @@ void infer_max_pool_raw(const Tensor<int32_t>& data, Tensor<int32_t>& output, co
 
 void infer_max_pool_iter(const Tensor<int32_t>& data, Tensor<int32_t>& output, const Shape& kernel,
                          const Shape& pads_begin, const Shape& pads_end) {
-    mp_iter::max_pool(data.buffer(), output.buffer(), data.shape(), output.shape(), kernel, pads_begin, pads_end);
+    mp_iter::max_pool(data.buffer(), output.buffer(), data.shape(), output.shape(), kernel, pads_begin);
 }
 
 int main(int argc, char** argv) {

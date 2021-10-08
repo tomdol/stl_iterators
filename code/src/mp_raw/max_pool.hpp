@@ -64,7 +64,8 @@ void ext_max_pool(const Tensor<T>& data, Tensor<T>& out, const Shape& kernel, co
                     for (size_t kernel_row = 0; kernel_row < kernel[0]; ++kernel_row) {
                         for (size_t kernel_col = 0; kernel_col < kernel[1]; ++kernel_col) {
                             const size_t data_elem_index =
-                                data_shape[3] * (kernel_row + kernel_position[0]) + kernel_col + kernel_position[1];
+                                data_shape[3] * (kernel_row * dilations[0] + kernel_position[0]) +
+                                kernel_col * dilations[1] + kernel_position[1];
 
                             const auto current_elem = *(data.buffer() + data_elem_index);
                             if (current_elem > max_elem) {

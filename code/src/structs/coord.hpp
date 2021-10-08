@@ -26,6 +26,13 @@ struct Coord : std::array<T, Dims> {
             this->operator[](i) = other[i] - paddings_begin[i];
         }
     }
+
+    Coord(const Coord<Dims>& other, const Shape& paddings_begin, const Shape& strides) : std::array<T, Dims>{} {
+        for (size_t i = 0; i < other.size(); ++i) {
+            this->operator[](i) = other[i] * strides[i] - paddings_begin[i];
+        }
+    }
+
     friend std::ostream& operator<<(std::ostream& s, const Coord<Dims, T>& c) {
         s << "Coord{";
         for (size_t i = 0; i < c.size(); ++i) {

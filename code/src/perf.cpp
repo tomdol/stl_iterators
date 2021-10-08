@@ -33,7 +33,7 @@ int main(int argc, char** argv) {
     std::vector<int32_t> input_values;
     input_values.resize(in_shape.shape_capacity());
     std::iota(input_values.begin(), input_values.end(), 1);
-    // std::random_shuffle(std::begin(input_values), std::end(input_values));
+    std::random_shuffle(std::begin(input_values), std::end(input_values));
     const auto data = Tensor<int32_t>(in_shape, input_values);
     auto output = Tensor<int32_t>{out_shape};
 
@@ -46,7 +46,6 @@ int main(int argc, char** argv) {
     output.reset();
 
     const auto elapsed_time_raw = infer_max_pool_raw(data, output, kernel, pads_begin, pads_end);
-    // std::cout << output << std::endl;
     std::cout << "Elapsed time  (raw): " << elapsed_time_raw << "ms" << std::endl;
     output.reset();
 

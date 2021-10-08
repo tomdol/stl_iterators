@@ -56,6 +56,6 @@ struct Tensor {
     }
 
   private:
-    const Shape _shape;
+    Shape _shape;
     std::unique_ptr<T[]> _buffer;
 };

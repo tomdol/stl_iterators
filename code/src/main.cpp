@@ -4,16 +4,6 @@
 #include "mp_raw/max_pool.hpp"
 #include "structs/tensor.hpp"
 
-void infer_max_pool_raw(const Tensor<int32_t>& data, Tensor<int32_t>& output, const Shape& kernel,
-                        const Shape& pads_begin, const Shape& pads_end) {
-    mp_raw::max_pool(data, output, kernel, pads_begin);
-}
-
-void infer_max_pool_iter(const Tensor<int32_t>& data, Tensor<int32_t>& output, const Shape& kernel,
-                         const Shape& pads_begin, const Shape& pads_end) {
-    mp_iter::max_pool(data.buffer(), output.buffer(), data.shape(), output.shape(), kernel, pads_begin);
-}
-
 int main(int argc, char** argv) {
     // clang-format off
     const auto data = Tensor<int32_t>{Shape{1, 1, 4, 4}, 
@@ -28,14 +18,23 @@ int main(int argc, char** argv) {
     const auto pads_begin = Shape{0, 0};
     const auto pads_end = Shape{0, 0};
 
+
     std::cout << data << std::endl;
 
-    infer_max_pool_raw(data, output, kernel, pads_begin, pads_end);
+    mp_raw::max_pool(data, output, kernel, pads_begin);
     std::cout << output << std::endl;
 
     output.reset();
-    infer_max_pool_iter(data, output, kernel, pads_begin, pads_end);
+    mp_iter::max_pool(data.buffer(), output.buffer(), data.shape(), output.shape(), kernel, pads_begin);
     std::cout << output << std::endl;
+
+
+    const auto strides = Shape{2, 2};
+    const auto dilations = Shape{1, 1};
+
+    auto output2x2 = Tensor<int32_t>{Shape{1, 1, 2, 2}};
+    mp_raw::ext_max_pool(data, output2x2, kernel, pads_begin, strides, dilations);
+    std::cout << output2x2 << std::endl;
 
     return 0;
 }

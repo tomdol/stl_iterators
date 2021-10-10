@@ -20,9 +20,9 @@ int main(int argc, char** argv) {
 
     std::cout << data << std::endl;
 
+    std::cout << "Basic MaxPool\n";
     mp_raw::max_pool(data, output, kernel, pads_begin);
     std::cout << output << std::endl;
-
     output.reset();
     mp_iter::max_pool(data.buffer(), output.buffer(), data.shape(), output.shape(), kernel, pads_begin);
     std::cout << output << std::endl;
@@ -30,6 +30,7 @@ int main(int argc, char** argv) {
     auto strides = Shape{2, 2};
     auto dilations = Shape{1, 1};
 
+    std::cout << "MaxPool with strides\n";
     auto output2x2 = Tensor<int32_t>{Shape{1, 1, 2, 2}};
     mp_raw::ext_max_pool(data, output2x2, kernel, pads_begin, strides, dilations);
     std::cout << output2x2 << std::endl;
@@ -42,6 +43,7 @@ int main(int argc, char** argv) {
     strides = Shape{1, 1};
     dilations = Shape{2, 2};
 
+    std::cout << "MaxPool with dilations\n";
     output2x2.reset();
     mp_raw::ext_max_pool(data, output2x2, kernel, pads_begin, strides, dilations);
     std::cout << output2x2 << std::endl;

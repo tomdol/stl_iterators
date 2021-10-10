@@ -28,8 +28,8 @@ struct KernelIterator final {
 
     KernelIterator(const Coord2D& kernel_position, const Shape& kernel_shape, const Shape& tensor_shape,
                    const Shape& dilations, EndIteratorTag) {
-        _data_elem_idx = tensor_shape[3] * kernel_position[0] * dilations[0] + kernel_position[1];
-        _data_elem_idx += tensor_shape[3] * kernel_shape[1];
+        _data_elem_idx = tensor_shape[3] * (kernel_position[0] + kernel_shape[0] * dilations[0]);
+        _data_elem_idx += kernel_position[1];
     }
 
     T& operator*() { return _tensor_data[_data_elem_idx]; }

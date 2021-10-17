@@ -30,6 +30,20 @@
             </section>
             <section>
                 <section>
+                    <h2>Pointer semantics</h2>
+                    <h3 class="fragment italic">Iterators are the pointers of modern C++</h3>
+                </section>
+                <section>
+                    <h2>Iterator dereference</h2>
+                    <img src="img/iterator-dereference.png">
+                </section>
+                <section>
+                    <h2>Custom iterator dereference</h2>
+                    <img src="img/iterator-dereference-struct.png" style="width: 80%">
+                </section>
+            </section>
+            <section>
+                <section>
                     <h2>MaxPool</h2>
                     <img src="img/max_pool_animation.gif" alt="">
                 </section>
@@ -46,6 +60,21 @@
                     <h3>Kernel position calculation</h3>
                     <h4>(with padding, strides and dilations)</h4>
                     <img src="img/kernel-pos-calculation-strides-dilations.png" alt="">
+                </section>
+                <section>
+                    <h3>MaxPool algorithm</h3>
+                    <ul class="loose">
+                        <li>For each output tensor element...</li>
+                        <li>Calculate the kernel position (top-left corner)</li>
+                        <li>Iterate over the kernel elements row-by-row</li>
+                        <li>Select the element with the maximum value</li>
+                        <li>Requires transformation of an element's 2D coordinate to an address in the flat tensor</li>
+                    </ul>
+                </section>
+                <section>
+                    <h3>MaxPool</h3>
+                    <img src="img/mp-transform.png" alt="">
+                    <h3 class="fragment accent"><span class="fira">std::transform</span></h3>
                 </section>
             </section>
         </div>

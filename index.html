@@ -81,6 +81,37 @@
                     <h3 class="fragment accent"><span class="fira">std::transform</span></h3>
                 </section>
             </section>
+            <section>
+                <section>
+                    <h3>#include <span class="accent">&lt;iterator&gt;</span></h3>
+                    http://www.cplusplus.com/reference/iterator/
+                </section>
+                <section>
+                    <h3>Iterator categories</h3>
+                </section>
+                <section>
+                    <h3>Output iterators</h3>
+                    All forward, bidirectional and random-access iterators that are not constant iterators are also valid output iterators.
+                    http://www.cplusplus.com/reference/iterator/OutputIterator/
+                </section>
+                <section>
+                    <h3>Iterator categories</h3>
+                    http://www.cplusplus.com/reference/iterator/iterator_traits/
+                    <br>
+                     For every iterator type, a corresponding specialization of iterator_traits class template shall be defined, with at least the following member types defined:
+                </section>
+            </section>
+            <section>
+                <section>
+                    <h3>Iterability using an adapter</h3>
+                    <pre><code>for (auto elem : enumerate(vector)) {
+                        const auto index = elem.first;
+                        const auto& value = elem.second;
+                    }
+                    </code></pre>
+                    to be used with types whose API cannot be extended
+                </section>
+            </section>
         </div>
     </div>
 

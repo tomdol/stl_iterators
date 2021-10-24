@@ -26,10 +26,7 @@ void max_pool(const T* data, T* output, const Shape& data_shape, const Shape& ou
                     const auto kernel_position = Coord2D({out_row, out_col}, paddings_begin);
                     const auto kernel = Kernel{kernel_shape, kernel_position, data_shape, channel_data};
 
-                    const auto max_elem = std::max_element(std::begin(kernel), std::end(kernel));
-
-                    *(output + out_idx) = *max_elem;
-                    ++out_idx;
+                    output[out_idx++] = *(std::max_element(std::begin(kernel), std::end(kernel)));
                 }
             }
         }

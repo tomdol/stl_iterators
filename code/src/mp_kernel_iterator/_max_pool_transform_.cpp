@@ -6,6 +6,13 @@
 #include "structs/tensor.hpp"
 #include "structs/validation.hpp"
 
+struct ShapeIterator {
+    // [ 0,0  |  0,1  |  0,2 ]
+    // [ 1,0  |  1,1  |  1,2 ]
+    // [ 2,0  |  2,1  |  2,2 ]
+    Coord2D operator*() const;
+};
+
 template <typename T>
 void max_pool(const T* data, T* output, const Shape& data_shape, const Shape& out_shape, const Shape& kernel_shape,
               const Shape& paddings_begin) {
@@ -19,8 +26,8 @@ void max_pool(const T* data, T* output, const Shape& data_shape, const Shape& ou
             const T* channel_data = data + b * batch_elems + c * channel_elems;
             T* out_channel_data = output; // + calculated output channel offset
 
-            auto out_shape_begin = out_shape.begin();
-            auto out_shape_end = out_shape.end();
+            auto out_shape_begin = out_shape.begin(); // ShapeIterator
+            auto out_shape_end = out_shape.end();     // ShapeIterator
 
             std::transform(out_shape_begin, out_shape_end, out_channel_data, [&](const Coord2D& out_elem) {
                 const auto kernel_position = Coord2D({out_elem[0], out_elem[1]}, paddings_begin);

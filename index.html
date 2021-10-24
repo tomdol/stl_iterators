@@ -24,9 +24,37 @@
     <div class="reveal">
         <div class="slides">
             <section>
-                <h2>The Iterator Pattern</h2>
-                <img src="img/presentation-logo.drawio.png" alt="">
-                <h3>in Standard Template Library</h3>
+                <section>
+                    <h2>The Iterator Pattern</h2>
+                    <img src="img/presentation-logo.drawio.png" alt="">
+                    <h3>in Standard Template Library</h3>
+                </section>
+                <section>
+                    <h2>Scope & goals</h2>
+                    <ul>
+                        <li>Why was STL designed the way it was?</li>
+                        <li class="fragment">C++ iterators walkthrough</li>
+                        <li class="fragment">The next big step in the STL evolution</li>
+                        <li class="fragment">Custom iterators</li>
+                    </ul>
+                </section>
+            </section>
+            <section>
+                <section>
+                    <h2>STL's design principles</h2>
+                    <ul>
+                        <li>Alexander Stepanov <a href="https://www.youtube.com/watch?v=COuHLky7E2Q">youtube.com/watch?v=COuHLky7E2Q</a></li>
+                        <li>Bjarne Stroustroup <a href="https://www.stroustrup.com/rules.pdf">stroustrup.com/rules.pdf</a></li>
+                        <li>Jonathan Boccara <a href="https://www.fluentcpp.com/2017/04/18/the-design-of-the-stl/">fluentcpp.com/2017/04/18/the-design-of-the-stl/</a></li>
+                    </ul>
+                </section>
+                <section>
+                    <h2 class="accent">The principles</h2>
+                    <ol class="loose">
+                        <li class="fragment">Separation of algorithms from the data structures</li>
+                        <li class="fragment">Generality and Specialization</li>
+                    </ol>
+                </section>
             </section>
             <section>
                 <section>
@@ -74,6 +102,15 @@
                     <h3>Kernel position calculation</h3>
                     <h4>(with padding, strides and dilations)</h4>
                     <img src="img/kernel-pos-calculation-strides-dilations.png" alt="">
+                </section>
+                <section>
+                    <h2>MaxPool</h2>
+                    <img src="img/max_pool_animation.gif" alt="">
+                    <h3 class="fragment">DEMO CODE</h3>
+                </section>
+                <section>
+                    <img src="img/no-raw-loops.png" alt="">
+                    <h2 class="fragment fira">std::max_element</h2>
                 </section>
                 <section>
                     <h3>MaxPool</h3>

@@ -5,7 +5,6 @@
 
 #include <span>
 
-struct EndIteratorTag {};
 template <typename T>
 struct KernelIterator final {
     using iterator_category = std::input_iterator_tag;
@@ -27,7 +26,7 @@ struct KernelIterator final {
     }
 
     KernelIterator(const Coord2D& kernel_position, const Shape& kernel_shape, const Shape& tensor_shape,
-                   const Shape& dilations, EndIteratorTag) {
+                   const Shape& dilations) {
         _data_elem_idx = tensor_shape[3] * (kernel_position[0] + kernel_shape[0] * dilations[0]);
         _data_elem_idx += kernel_position[1];
     }
@@ -85,7 +84,7 @@ struct Kernel final {
     }
 
     KernelIterator<T> end() const {
-        return KernelIterator<T>(_kernel_position, _kernel_shape, _tensor_shape, _dilations, EndIteratorTag{});
+        return KernelIterator<T>(_kernel_position, _kernel_shape, _tensor_shape, _dilations);
     }
 
   private:

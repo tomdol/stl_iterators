@@ -58,6 +58,26 @@
             </section>
             <section>
                 <section>
+                    <h3>What's an iterator?</h3>
+                    <ul class="loose">
+                        <li>A container-traversal tool</li>
+                        <li class="fragment">An object (with a specific API)</li>
+                        <li class="fragment">Sort of a pointer to container's elements</li>
+                    </ul>
+                </section>
+                <section>
+                    <h3>What's so special about iterators?</h3>
+                    <ul>
+                        <li><span class="accent">Separation</span> of algorithms from the data structures</li>
+                        <li class="fragment"><span class="accent">Universal traversal</span> method over a range of elements</li>
+                        <li class="fragment">A single std::find() for all data structures instead of separate overloads for vector, map, set, deque,...</li>
+                        <li class="fragment"><span class="accent">Loose coupling</span> between algorithms and containers</li>
+                        <li class="fragment">Open-Closed Principle - extension of container's capabilities by new <span class="accent">generic</span> algorithms, not by modification of the containers themselves</li>
+                    </ul>
+                </section>
+            </section>
+            <section>
+                <section>
                     <h2>Pointer semantics</h2>
                     <h3 class="fragment italic">Iterators are the pointers of modern C++</h3>
                 </section>

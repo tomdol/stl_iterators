@@ -79,7 +79,7 @@
             <section>
                 <section>
                     <h2>Pointer semantics</h2>
-                    <h3 class="fragment italic">Iterators are the pointers of modern C++</h3>
+                    <h3>of a C++ iterator</h3>
                 </section>
                 <section>
                     <h2>Iterator dereference</h2>
@@ -90,8 +90,38 @@
                     <img src="img/iterator-dereference-struct.png" style="width: 80%">
                 </section>
                 <section>
+                    <h2>Iterator's <span class="fira">operator->()</span></h2>
+                    <img src="img/iterator-arrow.png" alt="">
+                </section>
+                <section>
+                    <h3>Custom iterator's <span class="fira">operator->()</span></h3>
+                    <img src="img/iterator-arrow-struct.png" style="width: 80%">
+                </section>
+                <section>
                     <h3>Iterator incrementation/decrementation</h3>
                     <img src="img/iterator-increment-decrement.png" style="width: 80%">
+                </section>
+                <section>
+                    <h3>Custom iterator implementation</h3>
+                    <h4>of increment/decrement</h4>
+                    <h4>insert missing pic here</h4>
+                </section>
+                <section>
+                    <h3>Pointer semantics</h3>
+                    <h5>makes STL algorithms applicable to containers but also to old-school arrays</h5>
+                    <img src="img/pointer-semantics.png" alt="">
+                </section>
+            </section>
+            <section>
+                <section>
+                    <h3>Things to remember when writing your own iterator</h3>
+                </section>
+                <section>
+                    <ul>
+                        <li>inherit from std::iterator</li>
+                        <li>but std::iterator got deprecated?</li>
+                        <li>specialize some functions (advance, next)</li>
+                    </ul>
                 </section>
             </section>
             <section>

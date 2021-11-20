@@ -87,7 +87,7 @@
                 </section>
                 <section>
                     <h2>Custom iterator dereference</h2>
-                    <img src="img/iterator-dereference-struct.png" style="width: 80%">
+                    <img src="img/iterator-dereference-struct.png" class="w80">
                 </section>
                 <section>
                     <h2>Iterator's <span class="fira">operator->()</span></h2>
@@ -95,11 +95,11 @@
                 </section>
                 <section>
                     <h3>Custom iterator's <span class="fira">operator->()</span></h3>
-                    <img src="img/iterator-arrow-struct.png" style="width: 80%">
+                    <img src="img/iterator-arrow-struct.png" class="w80">
                 </section>
                 <section>
                     <h3>Iterator incrementation/decrementation</h3>
-                    <img src="img/iterator-increment-decrement.png" style="width: 80%">
+                    <img src="img/iterator-increment-decrement.png" class="w80">
                 </section>
                 <section>
                     <h3>Custom iterator implementation</h3>
@@ -110,6 +110,29 @@
                     <h3>Pointer semantics</h3>
                     <h5>makes STL algorithms applicable to containers but also to old-school arrays</h5>
                     <img src="img/pointer-semantics.png" alt="">
+                </section>
+            </section>
+            <section>
+                <section><h2>Iterator categories</h2></section>
+                <section>
+                    <h2>Named requirements</h2>
+                    <q class="accent">Written expectations about C++ types and objects</q>
+                    <p class="fragment">Used in the C++ standard to state those expectations</p>
+                    <p class="fragment">One requirement can be used to define another (like in maths)</p>
+                    <p class="fragment">Usually paired with some helpers that express those expectations in the code</p>
+                    <a href="https://en.cppreference.com/w/cpp/named_req" class="fragment">en.cppreference.com/w/cpp/named_req</a>
+                </section>
+                <section>
+                    <h3><q>DefaultConstructible</q></h3>
+                    <img src="img/default_constructible.png" class="w80">
+                </section>
+                <section>
+                    <h3><q>Predicate</q></h3>
+                    <img src="img/predicate.png" class="w90">
+                </section>
+                <section>
+                    <h2>Iterator categories</h2>
+                    <img src="img/iterator-categories.png" alt="">
                 </section>
             </section>
             <section>
@@ -133,9 +156,6 @@
                     </ul>
                 </section>
                 <section>
-                    <h3>Iterator adapters</h3>
-                </section>
-                <section>
                     <h3><span class="fira">std::begin()</span> vs <span class="fira">obj.begin()</span></h3>
                 </section>
                 <section>
@@ -149,11 +169,18 @@
                 </section>
                 <section>
                     <h3>The curious case of <span class="fira accent">std::vector&lt;bool&gt;</span></h3>
-                    <img src="img/vector-of-bool.png" style="width: 80%">
+                    <img src="img/vector-of-bool.png" class="w80">
                 </section>
                 <section>
                     <h3><span class="fira accent">std::basic_string</span> to the rescue</h3>
                     <img src="img/string-of-bool.png" alt="">
+                </section>
+            </section>
+            <section>
+                <section>
+                    <h2>Iterator adaptors</h2>
+                    https://en.cppreference.com/w/cpp/iterator/counted_iterator
+                    
                 </section>
             </section>
             <section>
@@ -208,9 +235,6 @@
                 <section>
                     <h3>#include <span class="accent">&lt;iterator&gt;</span></h3>
                     http://www.cplusplus.com/reference/iterator/
-                </section>
-                <section>
-                    <h3>Iterator categories</h3>
                 </section>
                 <section>
                     <h3>Output iterators</h3>

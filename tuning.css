@@ -69,3 +69,11 @@ hr {
 .reveal pre.double {
     font-size: 2rem !important;
 }
+
+img.w80 {
+    width: 80% !important;
+}
+
+img.w90 {
+    width: 90% !important;
+}

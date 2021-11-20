@@ -134,6 +134,18 @@
                     <h2>Iterator categories</h2>
                     <img src="img/iterator-categories.png" alt="">
                 </section>
+                <section>
+                    <h2>LegacyIterator</h2>
+                    <p>The base set of requirements for all iterators</p>
+                    <ul class="fragment">
+                        <li><i>CopyConstructible</i></li>
+                        <li><i>CopyAssignable</i></li>
+                        <li><i>Destructible</i></li>
+                        <li><i>Swappable</i></li>
+                        <li>Specialization of <span class="fira accent">std::iterator_traits&lt;Iter&gt;</span></li>
+                        <li>Both expressions <span class="fira accent">*iter</span> and <span class="fira accent">++iter</span> are valid</li>
+                    </ul>
+                </section>
             </section>
             <section>
                 <section>
@@ -180,7 +192,7 @@
                 <section>
                     <h2>Iterator adaptors</h2>
                     https://en.cppreference.com/w/cpp/iterator/counted_iterator
-                    
+
                 </section>
             </section>
             <section>

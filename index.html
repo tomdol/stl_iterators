@@ -86,6 +86,10 @@
                     <img src="img/iterator-dereference.png">
                 </section>
                 <section>
+                    <h3>Dereferencing a <span class="accent">past-the-end</span> iterator is undefined behavior</h3>
+                    <a href="https://en.cppreference.com/w/cpp/container/vector/end">en.cppreference.com/w/cpp/container/vector/end</a>
+                </section>
+                <section>
                     <h2>Custom iterator dereference</h2>
                     <img src="img/iterator-dereference-struct.png" class="w80">
                 </section>
@@ -131,11 +135,14 @@
                     <img src="img/predicate.png" class="w90">
                 </section>
                 <section>
+                    replaced (and extented) by concepts
+                </section>
+                <section>
                     <h2>Iterator categories</h2>
                     <img src="img/iterator-categories.png" alt="">
                 </section>
                 <section>
-                    <h2>LegacyIterator</h2>
+                    <h2><span class="fira">LegacyIterator</span></h2>
                     <p>The base set of requirements for all iterators</p>
                     <ul class="fragment">
                         <li><i>CopyConstructible</i></li>
@@ -145,6 +152,14 @@
                         <li>Specialization of <span class="fira accent">std::iterator_traits&lt;Iter&gt;</span></li>
                         <li>Both expressions <span class="fira accent">*iter</span> and <span class="fira accent">++iter</span> are valid</li>
                     </ul>
+                </section>
+                <section>
+                    <h2><span class="fira">LegacyInputIterator</span></h2>
+                    <p><i>dedicated for single-pass algorithms</i></p>
+                    <img src="img/input-iterator-single-pass.png" class="w80">
+                </section>
+                <section>
+                    examples of iterator-related concepts https://en.cppreference.com/w/cpp/iterator/input_or_output_iterator
                 </section>
             </section>
             <section>

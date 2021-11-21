@@ -122,7 +122,7 @@
                     <h2>Named requirements</h2>
                     <q class="accent">Written expectations about C++ types and objects</q>
                     <p class="fragment">Used in the C++ standard to state those expectations</p>
-                    <p class="fragment">One requirement can be used to define another (like in maths)</p>
+                    <p class="fragment">One requirement can be used to define another</p>
                     <p class="fragment">Usually paired with some helpers that express those expectations in the code</p>
                     <a href="https://en.cppreference.com/w/cpp/named_req" class="fragment">en.cppreference.com/w/cpp/named_req</a>
                 </section>
@@ -135,7 +135,8 @@
                     <img src="img/predicate.png" class="w90">
                 </section>
                 <section>
-                    replaced (and extented) by concepts
+                    <h3><span class="fira">std::iterator_traits&lt;I&gt;</span></h3>
+                    <img src="img/iterator-traits.png" alt="">
                 </section>
                 <section>
                     <h2>Iterator categories</h2>
@@ -149,14 +150,35 @@
                         <li><i>CopyAssignable</i></li>
                         <li><i>Destructible</i></li>
                         <li><i>Swappable</i></li>
-                        <li>Specialization of <span class="fira accent">std::iterator_traits&lt;Iter&gt;</span></li>
+                        <li><span class="fira accent">std::iterator_traits&lt;Iter&gt;</span></li>
                         <li>Both expressions <span class="fira accent">*iter</span> and <span class="fira accent">++iter</span> are valid</li>
                     </ul>
                 </section>
                 <section>
                     <h2><span class="fira">LegacyInputIterator</span></h2>
-                    <p><i>dedicated for single-pass algorithms</i></p>
-                    <img src="img/input-iterator-single-pass.png" class="w80">
+                    <p><i>intended for single-pass algorithms</i><br><span class="fira">std::find    std::count</span></p>
+                    <img src="img/input-iterator-single-pass.png" class="w70">
+                </section>
+                <section>
+                    <h2>Iterator tags</h2>
+                    <img src="img/iterator-tags.png" alt=""><br><br>
+                    <img src="img/custom-iterator-category.png" class="fragment">
+                </section>
+                <section>
+                    <h2>Tag dispatch</h2>
+                    <img src="img/advance-tag-dispatch.png" alt="">
+                </section>
+                <section>
+                    <h3><span class="fira">std::advance() with <span class="accent">input_iterator_tag</span></span></h3>
+                    <img src="img/advance-input-iterator.png" alt="">
+                </section>
+                <section>
+                    <h3><span class="fira">std::advance() with <span class="accent">bidirectional_iterator_tag</span></span></h3>
+                    <img src="img/advance-bidirectional-iterator.png" alt="">
+                </section>
+                <section>
+                    <h3><span class="fira">std::advance() with <span class="accent">random_access_iterator_tag</span></span></h3>
+                    <img src="img/advance-random-access-iterator.png" alt="">
                 </section>
                 <section>
                     examples of iterator-related concepts https://en.cppreference.com/w/cpp/iterator/input_or_output_iterator
@@ -184,9 +206,6 @@
                 </section>
                 <section>
                     <h3><span class="fira">std::begin()</span> vs <span class="fira">obj.begin()</span></h3>
-                </section>
-                <section>
-                    <h3>5 standard iterator types in C++</h3>
                 </section>
                 <section>
                     <h3>Iterator invalidation</h3>

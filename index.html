@@ -31,11 +31,11 @@
                 </section>
                 <section>
                     <h2>Scope & goals</h2>
-                    <ul>
+                    <ul class="loose">
                         <li>Why was STL designed the way it was?</li>
                         <li class="fragment">C++ iterators walkthrough</li>
-                        <li class="fragment">The next big step in the STL evolution</li>
                         <li class="fragment">Custom iterators</li>
+                        <li class="fragment">The next big step in the STL evolution</li>
                     </ul>
                 </section>
             </section>
@@ -135,10 +135,6 @@
                     <img src="img/predicate.png" class="w90">
                 </section>
                 <section>
-                    <h3><span class="fira">std::iterator_traits&lt;I&gt;</span></h3>
-                    <img src="img/iterator-traits.png" alt="">
-                </section>
-                <section>
                     <h2>Iterator categories</h2>
                     <img src="img/iterator-categories.png" alt="">
                 </section>
@@ -150,14 +146,40 @@
                         <li><i>CopyAssignable</i></li>
                         <li><i>Destructible</i></li>
                         <li><i>Swappable</i></li>
-                        <li><span class="fira accent">std::iterator_traits&lt;Iter&gt;</span></li>
-                        <li>Both expressions <span class="fira accent">*iter</span> and <span class="fira accent">++iter</span> are valid</li>
+                        <li><span class="fira accent">std::iterator_traits&lt;Iterator&gt;</span></li>
+                        <li><span class="fira accent">*iter</span> - dereferenceable / undefined return value</li>
+                        <li><span class="fira accent">++iter</span> - defined and returns <span class="fira">Iterator&</span></li>
                     </ul>
                 </section>
                 <section>
+                    <h3><span class="fira">std::iterator_traits&lt;I&gt;</span></h3>
+                    <img src="img/iterator-traits.png" alt="">
+                </section>
+                <section>
                     <h2><span class="fira">LegacyInputIterator</span></h2>
-                    <p><i>intended for single-pass algorithms</i><br><span class="fira">std::find    std::count</span></p>
-                    <img src="img/input-iterator-single-pass.png" class="w70">
+                    <ul>
+                        <li><i>EqualityComparable</i></li>
+                        <li class="fragment"><span class="fira accent">i != j</span> - valid expression</li>
+                        <li class="fragment"><span class="fira accent">*i</span> returns <span class="fira">reference</span> from <span class="fira">iterator_traits</span></li>
+                        <li class="fragment"><span class="fira accent">reference</span> might be a proxy object</li>
+                        <li class="fragment"><span class="fira accent">operator->()</span> is defined</li>
+                        <li class="fragment">intended for single-pass algorithms - <span class="fira accent">std::find, std::count</span></li>
+                    </ul>
+                </section>
+                <section>
+                    <img src="img/input-iterator-single-pass.png">
+                </section>
+                <section>
+                    <h3><span class="fira">LegacyForwardIterator</span></h3>
+                    <ul>
+                        <li><i>DefaultConstructible</i></li>
+                        <li class="fragment"><span class="fira accent">std::iterator_traits&lt;Iter&gt;::reference</span> defined as <span class="fira"><span class="accent">T&</span> or <span class="accent">const T&</span></span></li>
+                        <li class="fragment">Provides <i>multipass guarantee</i></li>
+                    </ul>
+                </section>
+                <section>
+                    <h3>Multipass guarantee</h3>
+                    <img src="img/multipass-guarantee.png" alt="">
                 </section>
                 <section>
                     <h2>Iterator tags</h2>

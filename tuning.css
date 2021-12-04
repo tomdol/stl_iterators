@@ -15,7 +15,7 @@
 .vsmall { font-size: 0.4em !important; }
 .italic { font-style: italic !important; }
 .fira { font-family: "Fira Code" !important; }
-.src { color: #777 !important; }
+.src { color: #444 !important; }
 .m0 { margin: 0 !important;}
 ul { list-style-type: square !important; margin: 0 !important; }
 .loose { line-height: 2em !important; }
@@ -68,6 +68,10 @@ hr {
 
 .reveal pre.double {
     font-size: 2rem !important;
+}
+
+img.w50 {
+    width: 50% !important;
 }
 
 img.w70 {

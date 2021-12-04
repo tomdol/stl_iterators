@@ -86,6 +86,7 @@
                 </section>
                 <section>
                     <h3>Dereferencing a <span class="accent">past-the-end</span> iterator is undefined behavior</h3>
+                    <img src="img/past-the-end.png" alt="">
                     <a href="https://en.cppreference.com/w/cpp/container/vector/end">en.cppreference.com/w/cpp/container/vector/end</a>
                 </section>
                 <section>
@@ -114,6 +115,11 @@
                     <h3>Pointer semantics</h3>
                     <h5>makes STL algorithms applicable to containers but also to old-school arrays</h5>
                     <img src="img/pointer-semantics.png" alt="">
+                </section>
+                <section>
+                    <h2>A C++ raw pointer</h2>
+                    <p>meets all requirements of a</p>
+                    <span class="fira accent big">RandomAccessIterator</span>
                 </section>
             </section>
             <section>
@@ -182,6 +188,12 @@
                     <img src="img/multipass-guarantee.png" alt="">
                 </section>
                 <section>
+                    <h3><span class="fira">LegacyBidirectionalIterator</span></h3>
+                </section>
+                <section>
+                    <h3><span class="fira">LegacyRandomAccessIterator</span></h3>
+                </section>
+                <section>
                     <h2>Iterator tags</h2>
                     <img src="img/iterator-tags.png" alt=""><br><br>
                     <img src="img/custom-iterator-category.png" class="fragment">
@@ -203,7 +215,12 @@
                     <img src="img/advance-random-access-iterator.png" alt="">
                 </section>
                 <section>
-                    examples of iterator-related concepts https://en.cppreference.com/w/cpp/iterator/input_or_output_iterator
+                    <h3>Iterator Concepts</h3>
+                    <img src="img/iterator-concepts.png" class="w80">
+                </section>
+                <section>
+                    <h3>ForwardIterator concept</h3>
+                    <img src="img/fwd-iter-concept.png" class="w80">
                 </section>
             </section>
             <section>
@@ -228,6 +245,9 @@
                 </section>
                 <section>
                     <h3><span class="fira">std::begin()</span> vs <span class="fira">obj.begin()</span></h3>
+                </section>
+                <section>
+                    <h3>end iterator vs sentinel</h3>
                 </section>
                 <section>
                     <h3>Iterator invalidation</h3>
@@ -394,7 +414,7 @@
         Reveal.initialize({
             controls: false,
             slideNumber: 'c/t',
-            transition: 'slide',
+            transition: 'zoom',
             plugins: [RevealHighlight]
         });
     </script>

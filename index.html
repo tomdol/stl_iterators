@@ -212,7 +212,19 @@
                 </section>
                 <section>
                     <h3><span class="fira">LegacyRandomAccessIterator</span></h3>
+                    <ul>
+                        <li>both <span class="fira accent">{i += n}, {i -= n}</span> return <span class="fira accent">Iterator&</span></li>
+                        <li class="fragment">The complexity of the expressions above is <span class="fira accent">O(1)</span></li>
+                        <li class="fragment">both <span class="fira accent">{i + n}, {i - n}</span> return <span class="fira accent">Iterator</span></li>
+                        <li class="fragment"><span class="fira accent">i - j</span> returns <span class="fira accent">difference_type</span></li>
+                        <li class="fragment"><span class="fira accent">i[n]</span> returns <span class="fira accent">reference</span></li>
+                        <li class="fragment">all comparison operators are defined</li>
+                    </ul>
+                    <br><br>
+                    <p class="fragment">Used by <span class="fira accent">std::vector</span></p>
                 </section>
+            </section>
+            <section>
                 <section>
                     <h2>Iterator tags</h2>
                     <img src="img/iterator-tags.png" alt=""><br><br>

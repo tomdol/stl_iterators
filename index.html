@@ -69,10 +69,24 @@
                     <ul>
                         <li><span class="accent">Separation</span> of algorithms from the data structures</li>
                         <li class="fragment"><span class="accent">Universal traversal</span> method over a range of elements</li>
-                        <li class="fragment">A single std::find() for all data structures instead of separate overloads for vector, map, set, deque,...</li>
+                        <li class="fragment">A single <span class="fira">std::find()</span> for all data structures instead of separate overloads for vector, map, set, deque,...</li>
                         <li class="fragment"><span class="accent">Loose coupling</span> between algorithms and containers</li>
                         <li class="fragment">Open-Closed Principle - extension of container's capabilities by new <span class="accent">generic</span> algorithms, not by modification of the containers themselves</li>
                     </ul>
+                </section>
+                <section>
+                    <h3>Why iterators instead of containers?</h3>
+                    <img src="img/std-sort-iterators.png" alt="">
+                    <ul>
+                        <li class="fragment">Flexibility</li>
+                        <li class="fragment">Working with a subset of a container</li>
+                        <li class="fragment">Iterator adaptors & their composability</li>
+                        <li class="fragment">Fewer algorithm overloads (sort & reverse sort)</li>
+                    </ul>
+                </section>
+                <section>
+                    <h2>Pitfall</h2>
+                    <img src="img/iters-to-different-containers.png" alt="">
                 </section>
             </section>
             <section>
@@ -205,10 +219,10 @@
                         <li><span class="fira accent">--i</span> returns <span class="fira accent">Iterator&</span></li>
                         <li class="fragment"><span class="fira accent">i--</span> return value convertible to <span class="fira accent">const Iterator&</span></li>
                         <li class="fragment"><span class="fira accent">*i--</span> returns <span class="fira accent">reference</span></li>
-                        <li class="fragment"><span class="fira accent">*i--</span> returns <span class="fira accent">reference</span></li>
                     </ul>
                     <br><br>
                     <p class="fragment">Used by <span class="fira accent">std::map</span> and <span class="fira accent">std::set</span></p>
+                    <p class="fragment">But also <span class="fira accent">std::reverse_copy</span> and <span class="fira accent">std::random_shuffle</span></p>
                 </section>
                 <section>
                     <h3><span class="fira">LegacyRandomAccessIterator</span></h3>
@@ -257,22 +271,12 @@
             </section>
             <section>
                 <section>
-                    <h3>Things to remember when writing your own iterator</h3>
-                </section>
-                <section>
-                    <ul>
-                        <li>inherit from std::iterator</li>
-                        <li>but std::iterator got deprecated?</li>
-                        <li>specialize some functions (advance, next)</li>
-                    </ul>
-                </section>
-            </section>
-            <section>
-                <section>
                     <h3>Iterator related special functions</h3>
                     <ul>
                         <li>advance</li>
                         <li>next</li>
+                        <li>distance</li>
+                        <li>begin & end</li>
                     </ul>
                 </section>
                 <section>
@@ -280,12 +284,6 @@
                 </section>
                 <section>
                     <h3>end iterator vs sentinel</h3>
-                </section>
-                <section>
-                    <h3>Iterator invalidation</h3>
-                </section>
-                <section>
-                    <h3>Proxy iterators</h3>
                 </section>
                 <section>
                     <h3>The curious case of <span class="fira accent">std::vector&lt;bool&gt;</span></h3>
@@ -299,7 +297,6 @@
             <section>
                 <section>
                     <h2>Iterator adaptors</h2>
-                    <!-- https://en.cppreference.com/w/cpp/iterator/counted_iterator -->
                 </section>
                 <section>
                     <h2>The decorator pattern</h2>
@@ -343,9 +340,15 @@
                     <h3><span class="fira">struct ReverseOrder</span></h3>
                     <img src="img/reverse-order-struct.png" alt="">
                 </section>
+            </section>
+            <section>
                 <section>
-                    <h3>The next level&nbsp;&nbsp;&nbsp; <span class="fira accent">#include&lt;ranges&gt;</span></h3>
-                    <img src="img/ranges-pipeline.png" class="w90">
+                    <h3><span class="fira accent">#include &lt;ranges&gt;</span></h3>
+                    <img src="img/ranges-basic.png" class="w80">
+                </section>
+                <section>
+                    <h3>The next level</h3>
+                    <img src="img/ranges-pipeline.png">
                 </section>
                 <section>
                     <h3>More about ranges</h3>
@@ -410,34 +413,6 @@
                     <h3>MaxPool</h3>
                     <img src="img/mp-transform.png" alt="">
                     <h3 class="fragment accent"><span class="fira">std::transform std::max_element</span></h3>
-                </section>
-            </section>
-            <section>
-                <section>
-                    <h3>#include <span class="accent">&lt;iterator&gt;</span></h3>
-                    http://www.cplusplus.com/reference/iterator/
-                </section>
-                <section>
-                    <h3>Output iterators</h3>
-                    All forward, bidirectional and random-access iterators that are not constant iterators are also valid output iterators.
-                    http://www.cplusplus.com/reference/iterator/OutputIterator/
-                </section>
-                <section>
-                    <h3>Iterator categories</h3>
-                    http://www.cplusplus.com/reference/iterator/iterator_traits/
-                    <br>
-                     For every iterator type, a corresponding specialization of iterator_traits class template shall be defined, with at least the following member types defined:
-                </section>
-            </section>
-            <section>
-                <section>
-                    <h3>Iterability using an adapter</h3>
-                    <pre><code>for (auto elem : enumerate(vector)) {
-                        const auto index = elem.first;
-                        const auto& value = elem.second;
-                    }
-                    </code></pre>
-                    to be used with types whose API cannot be extended
                 </section>
             </section>
         </div>

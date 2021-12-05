@@ -7,9 +7,7 @@
 
 template <typename T>
 struct KernelIterator final {
-    using iterator_category = std::input_iterator_tag;
-    using difference_type = std::ptrdiff_t;
-    using value_type = T;
+    using iterator_category = std::forward_iterator_tag;
     using pointer = T*;
     using reference = T&;
 
@@ -31,8 +29,8 @@ struct KernelIterator final {
         _data_elem_idx += kernel_position[1];
     }
 
-    T& operator*() { return _tensor_data[_data_elem_idx]; }
-    const T& operator*() const { return *(_tensor_data + _data_elem_idx); }
+    reference operator*() { return _tensor_data[_data_elem_idx]; }
+    const reference operator*() const { return _tensor_data[_data_elem_idx]; }
 
     bool operator==(const KernelIterator<T>& other) const { return _data_elem_idx == other._data_elem_idx; }
 

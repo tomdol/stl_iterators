@@ -164,9 +164,9 @@
                         <li><i>CopyConstructible</i></li>
                         <li><i>CopyAssignable</i></li>
                         <li><i>Destructible</i></li>
-                        <li><i>Swappable</i></li>
+                        <li><i>Swappable</i> - <span class="fira">std::swap, std::iter_swap</span></li>
                         <li><span class="fira accent">std::iterator_traits&lt;Iterator&gt;</span></li>
-                        <li><span class="fira accent">*iter</span> - dereferenceable / undefined return value</li>
+                        <li><span class="fira accent">*iter</span> - dereferenceable (unspecified return value)</li>
                         <li><span class="fira accent">++iter</span> - defined and returns <span class="fira">Iterator&</span></li>
                     </ul>
                 </section>
@@ -179,9 +179,10 @@
                     <ul>
                         <li><i>EqualityComparable</i></li>
                         <li class="fragment"><span class="fira accent">i != j</span> - valid expression</li>
-                        <li class="fragment"><span class="fira accent">*i</span> returns <span class="fira">reference</span> from <span class="fira">iterator_traits</span></li>
+                        <li class="fragment"><span class="fira accent">*i</span> returns <span class="fira accent">reference</span> from <span class="fira accent">iterator_traits</span></li>
                         <li class="fragment"><span class="fira accent">reference</span> might be a proxy object</li>
                         <li class="fragment"><span class="fira accent">operator->()</span> is defined</li>
+                        <li class="fragment"><span class="fira accent">*it++</span> returns <span class="fira accent">value_type</span></li>
                         <li class="fragment">intended for single-pass algorithms - <span class="fira accent">std::find, std::count</span></li>
                     </ul>
                 </section>
@@ -280,9 +281,6 @@
                 </section>
                 <section>
                     <h3><span class="fira">std::begin()</span> vs <span class="fira">obj.begin()</span></h3>
-                </section>
-                <section>
-                    <h3>end iterator vs sentinel</h3>
                 </section>
                 <section>
                     <h3>The curious case of <span class="fira accent">std::vector&lt;bool&gt;</span></h3>
@@ -412,6 +410,23 @@
                     <h3>MaxPool</h3>
                     <img src="img/mp-transform.png" alt="">
                     <h3 class="fragment accent"><span class="fira">std::transform std::max_element</span></h3>
+                </section>
+            </section>
+            <section>
+                <section>
+                    <h2 class="fira">std::span</h2>
+                </section>
+                <section>
+                    <h3>Legacy approach</h3>
+                    <img src="img/non-span.png" class="w80">
+                </section>
+                <section>
+                    <h3><span class="fira">std::span</span> approach</h3>
+                    <img src="img/span-reduce.png" class="w80">
+                </section>
+                <section>
+                    <h3><span class="fira">std::span</span> approach #2</h3>
+                    <img src="img/span-reduce-2.png" alt="">
                 </section>
             </section>
         </div>
